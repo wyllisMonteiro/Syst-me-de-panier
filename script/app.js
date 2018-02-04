@@ -9,6 +9,6 @@ let produits = [{
 
 let produitsHtml = $('.produits');
     for(let compteur = 0; compteur < produits.length ;compteur++) {
-        produitsHtml.append('<p>' + produits[compteur].nom + '</p>');
+        produitsHtml.append('<li>' + produits[compteur].nom + '</li>');
     }
     
