@@ -14,6 +14,6 @@ let produits = [{
 let produitsHtml = $('.produits');
     for(let compteur = 0; compteur < produits.length ;compteur++) {
         let result = produits[compteur];
-        produitsHtml.append('<div cless="panier"><p>' + result.nom + '</p>' + '<p>' + result.type + '</p></div><img src="' + result.lien + result.compteur + '">');
+        produitsHtml.append('<div cless="item"><p>' + result.nom + '</p>' + '<p>' + result.type + '</p></div><img src="' + result.lien + result.compteur + '">');
     }
     
