@@ -20,10 +20,10 @@ let produits = [{
 
 // Fonctions
 function switchItem(evt) {
+    let selected = $('.selected');
+    let toSelect = selected.parent().next().find('div');
+
     if(evt.keyCode === 39) {
-        let selected = $('.selected');
-        let toSelect = selected.parent().next().find('div');
-        
         if(toSelect.length === 0) {
             selected.removeClass('selected');
             $('a:first-child').find('.item').addClass('selected');
@@ -45,7 +45,17 @@ function switchItem(evt) {
         }
     }
     if(evt.keyCode === 13) {
-        console.log('lol');
+        let clone = selected.clone();
+        let classRecup = selected.attr('id');
+            clone.addClass(classRecup);
+        let panier = $('.panier');
+
+
+        if(panier.find('.' + classRecup).length === 0) {
+            panier.append(clone);        
+        } else {
+            $('.' + classRecup).remove();
+        }
     }
 }
 
@@ -56,13 +66,13 @@ let produitsHtml = $('.produits');
 for(let compteur = 0; compteur < produits.length ;compteur++) {
     let result = produits[compteur];
 
-    produitsHtml.append('<a href="#"><div class="item"><h1>' + result.nom + '</h1>' + '<h2>' + result.type + '</h2><img src="' + result.lien + result.compteur + '"></div></a>');
+    produitsHtml.append('<a href="#"><div class="item" id="' + result.nom + '"><h1>' + result.nom + '</h1>' + '<h2>' + result.type + '</h2><img src="' + result.lien + result.compteur + '"></div></a>');
 }
 
 let divItems = $('.item');
 divItems[0].classList.add('selected');
 
-$(document).on('keyup',switchItem)
+$(document).on('keyup',switchItem);
 
 
     
